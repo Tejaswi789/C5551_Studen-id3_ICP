@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"  >
+<head>
+    <meta charset="UTF-8">
+    <title>Weather prediction</title>
+    <style>
+
+        .weatherModule {
+            background: #f2f2f2;
+            height: 150px;
+            width: 250px;
+            border: 1px dashed #ccc;
+            padding: 1em;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+
+<div ng-app="weather" ng-controller="weatherctrl">
+    <label>Enter your city name </label>
+    <input type="text" ng-model="yourname" id="yourname" placeholder="Enter your city name here">
+    <br>
+    <br>
+    <label>Enter state code here </label>
+    <input type="text" ng-model="yourname1" id="yourname1" placeholder="Enter your state code here">
+    <button id="btn" ng-click="getWeather()"> Show Weather </button>
+    <br/>
+    <br/>
+    <div ng-repeat = "obj in result| limitTo:5">
+        {{obj.condition}}
+        {{obj.temp.english}}
+    </div>
+</div>
+</body>
+<script>
+    angular.module('weather',[])
+        .controller('weatherctrl', function($scope, $http) {
+            $scope.result = [];
+            $scope.getWeather = function() {
+                var city=document.getElementById("yourname").value;
+                var state=document.getElementById("yourname1").value;
+                $http.get('http://api.wunderground.com/api/4bbbc25f4f5946dd/hourly/q/'+state+'/'+city+'.json').success(function(data)
+                {
+                    console.log(data);
+                    $scope.result = data["hourly_forecast"];
+
+                })
+            }
+
+        });
+</script>
+
+
+</html>
