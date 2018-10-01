@@ -26,18 +26,18 @@ password:string;
     var password = this.password;
     if (this.username !== "" && this.password !== "") {
       //retrieving the logged in user by using filter function
-      var user = users.filter(function (el)
+      var user = users.filter(function (cred)
            {
-        return (el.username === username && el.password === password)
+        return (cred.username === username && cred.password === password)
       });
       if (user.length > 0) {
         localStorage.setItem("loggedInUser", JSON.stringify(user[0]));
         this.navCtrl.setRoot(LoginPage);
       } else {
-        this.presentToast("Invalid Username/Password.");
+        this.presentToast("Invalid Username orPassword.");
       }
     }else{
-      this.presentToast("Please fill all the details and login.");
+      this.presentToast(" fill all the details");
     }
   }
   goRegister()
