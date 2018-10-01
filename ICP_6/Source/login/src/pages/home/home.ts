@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 
-
+//import statements
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -10,7 +10,7 @@ import { RegisterPage } from '../register/register';
 export class HomePage {
 username:string;
 password:string;
-
+//Dependencies using in this class
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
 
   }
@@ -19,11 +19,14 @@ password:string;
   }
   goLogin()
   {
+    //getting the default localstorage assigned values
    var users = JSON.parse(localStorage.getItem("users"));
     var username = this.username;
     var password = this.password;
     if (this.username !== "" && this.password !== "") {
-      var user = users.filter(function (el) {
+      //retrieving the logged in user by using filter function
+      var user = users.filter(function (el)
+           {
         return (el.username === username && el.password === password)
       });
       if (user.length > 0) {
@@ -40,6 +43,8 @@ password:string;
   {
   this.navCtrl.push(RegisterPage);
   }
+  
+  //for diaplaying messages
     presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
