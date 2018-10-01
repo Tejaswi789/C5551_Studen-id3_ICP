@@ -31,6 +31,7 @@ repass:string="";
   }
   Register()
   {
+    //adding validations to the fields
   var users = JSON.parse(localStorage.getItem("users"));
     if (this.user.username !== "" && this.user.firstname !== "" && this.user.lastname !== "" && this.user.password !== "" && this.repass !== "") {
       if(this.user.password === this.repass){
