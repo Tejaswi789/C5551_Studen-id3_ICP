@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the RegisterPage page.
@@ -19,7 +20,7 @@ user={
 "username":"",
 "firstname":"",
 "lastname":"",
-"password":"",
+"password":""
 };
 repass:string="";
 
@@ -42,7 +43,8 @@ repass:string="";
       else{
         this.presentToast("Password missmatch.");
       }
-    }else{
+    }
+    else{
       this.presentToast("Please fill all the details.");
     }
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -28,7 +29,7 @@ password:string;
       });
       if (user.length > 0) {
         localStorage.setItem("loggedInUser", JSON.stringify(user[0]));
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(LoginPage);
       } else {
         this.presentToast("Invalid Username/Password.");
       }
