@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the RegisterPage page.
@@ -14,11 +15,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-username:string;
-password:string;
-repass:string
+user={
+"username":"",
+"firstname":"",
+"lastname":"",
+"password":"",
+};
+repass:string="";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -26,10 +31,37 @@ repass:string
   }
   Register()
   {
-  if(this.username.length==0||this.password.length==0||this.repass.length==0)
-  {alert("please enter details ");
+  var users = JSON.parse(localStorage.getItem("users"));
+    if (this.user.username !== "" && this.user.firstname !== "" && this.user.lastname !== "" && this.user.password !== "" && this.repass !== "") {
+      if(this.user.password === this.repass){
+      users.push(this.user);
+      localStorage.setItem("users", JSON.stringify(users));
+      this.presentToast("Successfully registered.");
+      this.navCtrl.setRoot(LoginPage);
+      }
+      else{
+        this.presentToast("Password missmatch.");
+      }
+    }else{
+      this.presentToast("Please fill all the details.");
+    }
+    }
+  
+    presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
+  
   
   }
 
-}
+
