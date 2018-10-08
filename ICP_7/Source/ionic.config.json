@@ -1,0 +1,7 @@
+{
+  "name": "firebase_storage",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
