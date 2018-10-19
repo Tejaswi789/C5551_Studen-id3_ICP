@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const request = require('request');
 
-app.get('/getdetails',function(req,resp,next){
+app.get('/get1',function(req,resp,next){
 const request = require('request');
 
 
