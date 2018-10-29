@@ -10,18 +10,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="js/detect.js"></script>
+    <script src="./detect.js"></script>
 </head>
 
 <body ng-app="facedetect" ng-controller="Ctrl1">
     <div class="col-sm-6 col-sm-offset-3 margin-top-30px">
-        <h1 class="text-center"> Gender/h1>
+        <h1 class="text-center"> FACE ATTRIBUTES</h1>
         <div class="input-group">
             <input type="text" class="form-control" ng-model="url" name="url" placeholder="enter  url here." />
             <span class="input-group-addon btn-color" id="basic-addon2" ng-click="getName()">Find Name</span>
         </div>
         
-        <h3 class="text-center" ng-if="name!==''">gender : {{gender}}</h3>
+        <h3 class="text-center" >GENDER : {{gender}}</h3>
+        <h3 class="text-center" >AGE : {{age}}</h3>
+        <h3 class="text-center" >MAKEUP : {{eyemakeup}}</h3>
+
+
+
         
     </div>
 </body>

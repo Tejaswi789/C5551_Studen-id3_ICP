@@ -15,7 +15,11 @@ app.controller("Ctrl1", function ($scope, $http) {
         }).then(function successCallback(response) {
             console.log(response.data);
             
-           $scope.gender=response.data[0].gender;
+           
+            $scope.gender=response.data[0].faceAttributes.gender;
+           $scope.age=response.data[0].faceAttributes.age;
+           $scope.eyemakeup=response.data[0].faceAttributes.makeup.eyeMakeup
+
         
         }, function errorCallback(response) {
             console.log(response);
