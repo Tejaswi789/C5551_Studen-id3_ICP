@@ -9,7 +9,10 @@ app.use(bodyParser.json());
 const request = require('request');
 
 app.get('/get1',function(req,resp,next){
+    console.log(req.query.url);
 const request = require('request');
+                                                                                                                                 
+
 
 
     const subscriptionKey = '6c660e3adfd7446698c30e611bde5b1a';
@@ -19,8 +22,8 @@ const request = require('request');
 // westus, replace "westcentralus" in the URL below with "westus".
 const uriBase = 'https://westus.api.cognitive.microsoft.com/face/v1.0/detect';
 
-const imageUrl =
-    'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+//const imageUrl =
+    //'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 // Request parameters.
 const params = {
     'returnFaceId': 'true',
@@ -32,7 +35,8 @@ const params = {
 const options = {
     uri: uriBase,
     qs: params,
-    body: '{"url": ' + '"' + imageUrl + '"}',
+    body: '{"url": ' + '"' + req.query.url
+     + '"}',
     headers: {
         'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key' : subscriptionKey
